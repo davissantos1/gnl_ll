@@ -12,7 +12,7 @@ t_list	*ft_lstnew(void *content)
 	return (new);
 }
 
-int	ft_lstsize(t_list *lst) // alterar para size do content total até o penultimo nó
+int	ft_lstsize(t_list *lst)
 {
 	int	size;
 
@@ -58,20 +58,20 @@ void	ft_lstdel(t_list **lst, void (*del)(void *))
 	*lst = NULL;
 }
 
-char	*ft_strchr(const char *s, int c)
+int	ft_indexof(const char *s, int c)
 {
 	int	i;
 
 	i = 0;
 	if (!s)
-		return (NULL);
+		return (-1);
 	while (s[i])
 	{
-		if ((char)s[i] == (char)c)
-			return ((char *)&s[i]);
+		if ((unsigned char)s[i] == (unsigned char)c)
+			return (i);
 		i++;
 	}
-	if ((char)c == '\0')
-		return ((char *)&s[i]);
-	return (NULL);
+	if ((unsigned char)s[i] == c)
+		return (i);
+	return (-1);
 }
